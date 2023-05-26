@@ -1,22 +1,29 @@
-# CS202: Semestral Project [Component Library Vue JS implementations]
-# Sakura Group
-# Color Palette : PINK
-BSCS - 3A
+# vue-project
 
-Group Members :
+This template should help get you started developing with Vue 3 in Vite.
 
-Calusa , Trecia Ann A. 
+## Recommended IDE Setup
 
-Delvo , Ralph Daniel R.
+[VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur) + [TypeScript Vue Plugin (Volar)](https://marketplace.visualstudio.com/items?itemName=Vue.vscode-typescript-vue-plugin).
 
-Evicner , Joshua A. 
+## Customize configuration
 
-Gonzales , Gladys Ann S.
+See [Vite Configuration Reference](https://vitejs.dev/config/).
 
-Ortiguero , Vanessa S.
+## Project Setup
 
-Peñaflor , Angeline Joyce D.
+```sh
+npm install
+```
 
+### Compile and Hot-Reload for Development
 
+```sh
+npm run dev
+```
 
+### Compile and Minify for Production
 
+```sh
+npm run build
+```
