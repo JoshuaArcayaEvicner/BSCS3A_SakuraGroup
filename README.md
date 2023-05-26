@@ -5,17 +5,17 @@ BSCS - 3A
 
 Group Members :
 
-Calusa , Trecia
+Calusa , Trecia Ann A. 
 
-Delvo , Ralph 
+Delvo , Ralph Daniel R.
 
-Evicner , Joshua
+Evicner , Joshua A. 
 
-Gonzales , Gladys
+Gonzales , Gladys Ann S.
 
-Peñaflor , Angeline
+Ortiguero , Vanessa S.
 
-Ortiguero , Vanessa
+Peñaflor , Angeline Joyce D.
 
 
 
