@@ -103,3 +103,105 @@
     }
   </script>
     </div>
+
+    <!-- Slider -->
+    <div class="component pink3">
+        <h2>Slider</h2>
+        <p>Description: These are three sliders with different pink color palettes.</p>
+    
+    
+    <head>
+        <title>Slider Component Example</title>
+        <style>
+          /* Styling for the slider component */
+          .slider-container {
+            width: 200px;
+          }
+          .slider-track {
+            width: 100%;
+            height: 5px;
+            background-color: #ddd;
+            border-radius: 5px;
+            position: relative;
+            cursor: pointer;
+          }
+          .slider-thumb {
+            width: 15px;
+            height: 15px;
+            background-color: #888;
+            border-radius: 50%;
+            position: absolute;
+            top: -5px;
+            cursor: grab;
+          }
+        </style>
+      </head>
+      <body>
+        <div id="sliderComponent"></div>
+      
+        
+        <script>
+          class Slider {
+            constructor(containerId, min, max, value) {
+              this.container = document.getElementById(containerId);
+              this.min = min;
+              this.max = max;
+              this.value = value;
+      
+              this.createSlider();
+              this.updateSliderValue();
+      
+              this.sliderThumb.addEventListener('mousedown', this.handleMouseDown.bind(this));
+              document.addEventListener('mousemove', this.handleMouseMove.bind(this));
+              document.addEventListener('mouseup', this.handleMouseUp.bind(this));
+            }
+      
+            createSlider() {
+              this.sliderContainer = document.createElement('div');
+              this.sliderContainer.className = 'slider-container';
+      
+              this.sliderTrack = document.createElement('div');
+              this.sliderTrack.className = 'slider-track';
+      
+              this.sliderThumb = document.createElement('div');
+              this.sliderThumb.className = 'slider-thumb';
+      
+              this.sliderTrack.appendChild(this.sliderThumb);
+              this.sliderContainer.appendChild(this.sliderTrack);
+              this.container.appendChild(this.sliderContainer);
+            }
+      
+            updateSliderValue() {
+              const thumbPosition = ((this.value - this.min) / (this.max - this.min)) * 100;
+              this.sliderThumb.style.left = thumbPosition + '%';
+            }
+      
+            handleMouseDown() {
+              this.isDragging = true;
+            }
+      
+            handleMouseMove(event) {
+              if (!this.isDragging) return;
+      
+              const containerRect = this.sliderTrack.getBoundingClientRect();
+              const offsetX = event.clientX - containerRect.left;
+              const thumbPosition = (offsetX / containerRect.width) * 100;
+      
+              if (thumbPosition >= 0 && thumbPosition <= 100) {
+                this.sliderThumb.style.left = thumbPosition + '%';
+                this.value = Math.round((thumbPosition / 100) * (this.max - this.min) + this.min);
+                console.log(this.value);
+                // Do something with the slider value
+              }
+            }
+      
+            handleMouseUp() {
+              this.isDragging = false;
+            }
+          }
+      
+          // Usage example:
+          const sliderComponent = new Slider('sliderComponent', 0, 100, 50);
+        </script>
+      </body>
+    </div>
