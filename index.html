@@ -137,7 +137,16 @@
   
     <div id="slider"></div>
     <div id="valueBox"></div>
-  
+    <div class="component explain">
+        <p><b>HTML Structure:</b><br>
+            A input> element in the HTML structure with the type set to "range" and the ID of "slider" is present. This input element stands in for the slider element.
+            <br><br>
+            <b>JavaScript Logic:</b><br>
+            Using document.getElementById() in JavaScript, we can find the slider element by its ID ("slider"). In order to listen for the "input" event, which occurs <br>
+            whenever the slider value changes, we next attach an event listener to the slider element. The event listener's slider.value function gives us access to the <br>
+            slider's current value. Depending on the slider value, you can use this value to perform additional processing, such as updating other page elements, 
+            performing calculations, or starting a chain of events. <br>
+    </div>
     <script>
       class Slider {
         constructor(containerId, min, max, value) {
@@ -230,6 +239,7 @@
         handleMouseUp() {
           this.isDragging = false;
         }
+        
       }
   
       // Create an instance of the Slider class
@@ -266,6 +276,7 @@
     #valueBox {
       margin-top: 10px;
       font-weight: bold;
+      text-align: center; 
     }
   </style>
     
