@@ -39,3 +39,67 @@
       <button class="pink2">Button 2</button>
       <button class="pink3">Button 3</button>
     </div>
+
+    <div class="component pink2">
+      <h2>Notifications</h2>
+      <p>Description: These are three notification components with a pink color palette.</p>
+
+  <title>Notification Components</title>
+  <style>
+    .notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 300px;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      padding: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .notification.success {
+      background-color: #dff0d8;
+      border-color: #d6e9c6;
+      color: #3c763d;
+    }
+
+    .notification.error {
+      background-color: #f2dede;
+      border-color: #ebccd1;
+      color: #a94442;
+    }
+
+    .notification.info {
+      background-color: #d9edf7;
+      border-color: #bce8f1;
+      color: #31708f;
+    }
+  </style>
+</head>
+<body>
+  <div class="notification success" id="successNotification">
+    <strong>Success:</strong> Your action was successful.
+  </div>
+
+  <div class="notification error" id="errorNotification">
+    <strong>Error:</strong> An error occurred while processing your request.
+  </div>
+
+  <div class="notification info" id="infoNotification">
+    <strong>Info:</strong> This is an informational message.
+  </div>
+
+  <button onclick="showNotification('successNotification')">Show Success Notification</button>
+  <button onclick="showNotification('errorNotification')">Show Error Notification</button>
+  <button onclick="showNotification('infoNotification')">Show Info Notification</button>
+
+  <script>
+    function showNotification(notificationId) {
+      var notification = document.getElementById(notificationId);
+      notification.style.display = 'block';
+      setTimeout(function() {
+        notification.style.display = 'none';
+      }, 3000); // Hide notification after 3 seconds
+    }
+  </script>
+    </div>
