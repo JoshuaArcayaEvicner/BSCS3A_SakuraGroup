@@ -40,70 +40,82 @@
       <button class="pink3">Button 3</button>
     </div>
 
-    <div class="component pink2">
-      <h2>Notifications</h2>
-      <p>Description: These are three notification components with a pink color palette.</p>
-
-  <title>Notification Components</title>
-  <style>
-    .notification {
-      position: fixed;
-      top: 20px;
-      right: 20px;
-      width: 300px;
-      background-color: #f9f9f9;
-      border: 1px solid #ccc;
-      padding: 10px;
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-    }
-
-    .notification.success {
-      background-color: #dff0d8;
-      border-color: #d6e9c6;
-      color: #3c763d;
-    }
-
-    .notification.error {
-      background-color: #f2dede;
-      border-color: #ebccd1;
-      color: #a94442;
-    }
-
-    .notification.info {
-      background-color: #d9edf7;
-      border-color: #bce8f1;
-      color: #31708f;
-    }
-  </style>
-</head>
-<body>
-  <div class="notification success" id="successNotification">
-    <strong>Success:</strong> Your action was successful.
-  </div>
-
-  <div class="notification error" id="errorNotification">
-    <strong>Error:</strong> An error occurred while processing your request.
-  </div>
-
-  <div class="notification info" id="infoNotification">
-    <strong>Info:</strong> This is an informational message.
-  </div>
-
-  <button onclick="showNotification('successNotification')">Show Success Notification</button>
-  <button onclick="showNotification('errorNotification')">Show Error Notification</button>
-  <button onclick="showNotification('infoNotification')">Show Info Notification</button>
-
-  <script>
-    function showNotification(notificationId) {
-      var notification = document.getElementById(notificationId);
-      notification.style.display = 'block';
-      setTimeout(function() {
-        notification.style.display = 'none';
-      }, 3000); // Hide notification after 3 seconds
-    }
-  </script>
+     <div class="component pink2">
+        <h2>Notifications</h2>
+        <p>Description: These are three notification components with a pink color palette.</p>
+  
+    <title>Notification Components</title>
+    <style>
+      .notification {
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        width: 300px;
+        background-color: #f9f9f9;
+        border: 1px solid #ccc;
+        padding: 10px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+      }
+  
+      .notification.success {
+        background-color: #dff0d8;
+        border-color: #d6e9c6;
+        color: #3c763d;
+      }
+  
+      .notification.error {
+        background-color: #f2dede;
+        border-color: #ebccd1;
+        color: #a94442;
+      }
+  
+      .notification.info {
+        background-color: #d9edf7;
+        border-color: #bce8f1;
+        color: #31708f;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="component explain">
+        <p><b>Making use of the onclick event: </b><br><br>
+            So far in this course, when the body of the web page is loaded, we have called the showAlert() function. We could still use other events to activate it instead. For example, we may show the warning only if the user clicks on a button.
+            <br><br>
+            <b>Consider this:</b><br>
+            Remove the body> element's onload="showNotification()" property.
+            Insert the following HTML button> element anywhere on your web page: <br><br>
+            "button onclick="showNotification('successNotification')">Show Success Notification"<br>
+            "button onclick="showNotification('errorNotification')">Show Error Notification"<br>
+            "button onclick="showNotification('infoNotification')">Show Info Notification"<br><br>
+            Shows the example here below:
     </div>
 
+    <div class="notification success" id="successNotification">
+      <strong>Success:</strong> Your action was successful.
+    </div>
+  
+    <div class="notification error" id="errorNotification">
+      <strong>Error:</strong> An error occurred while processing your request.
+    </div>
+  
+    <div class="notification info" id="infoNotification">
+      <strong>Info:</strong> This is an informational message.
+    </div>
+  
+    <button onclick="showNotification('successNotification')">Show Success Notification</button>
+    <button onclick="showNotification('errorNotification')">Show Error Notification</button>
+    <button onclick="showNotification('infoNotification')">Show Info Notification</button>
+  
+    <script>
+      function showNotification(notificationId) {
+        var notification = document.getElementById(notificationId);
+        notification.style.display = 'block';
+        setTimeout(function() {
+          notification.style.display = 'none';
+        }, 3000); // Hide notification after 3 seconds
+      }
+    </script>
+      </div>
  
 <!-- Slider Component -->
 <div class="component pink3">
