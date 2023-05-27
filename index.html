@@ -10,12 +10,12 @@
     }
 
     .pink2 {
-      background-color: #ff69b4;
+      background-color: ##ff7eb9;
       color: white;
     }
 
     .pink3 {
-      background-color: #ff1493;
+      background-color: #ff7eb9;
       color: white;
     }
 
@@ -104,107 +104,142 @@
   </script>
     </div>
 
-   <!-- Slider Component -->
+ 
+<!-- Slider Component -->
 <div class="component pink3">
-  <h2>Slider</h2>
-  <p>Description: This is a slider that transitions from dark pink to light.</p>
-
-  <div id="slider"></div>
-
-  <script>
-    class Slider {
-      constructor(containerId, min, max, value) {
-        this.container = document.getElementById(containerId);
-        this.min = min;
-        this.max = max;
-        this.value = value;
-
-        this.createSlider();
-        this.updateSliderValue();
-
-        this.sliderThumb.addEventListener('mousedown', this.handleMouseDown.bind(this));
-        document.addEventListener('mousemove', this.handleMouseMove.bind(this));
-        document.addEventListener('mouseup', this.handleMouseUp.bind(this));
-      }
-
-      createSlider() {
-        this.sliderContainer = document.createElement('div');
-        this.sliderContainer.className = 'slider-container';
-
-        this.sliderTrack = document.createElement('div');
-        this.sliderTrack.className = 'slider-track';
-
-        this.sliderThumb = document.createElement('div');
-        this.sliderThumb.className = 'slider-thumb';
-
-        this.sliderTrack.appendChild(this.sliderThumb);
-        this.sliderContainer.appendChild(this.sliderTrack);
-        this.container.appendChild(this.sliderContainer);
-      }
-
-      updateSliderValue() {
-        const thumbPosition = ((this.value - this.min) / (this.max - this.min)) * 100;
-        this.sliderThumb.style.left = thumbPosition + '%';
-
-        const colorValue = Math.round((this.value / this.max) * 255);
-        const pinkShade = colorValue.toString(16).padStart(2, '0');
-        const trackColor = `#FF${pinkShade}${pinkShade}`;
-        const thumbColor = `#FF${pinkShade}${pinkShade}`;
-        this.sliderTrack.style.backgroundColor = trackColor;
-        this.sliderThumb.style.backgroundColor = thumbColor;
-      }
-
-      handleMouseDown() {
-        this.isDragging = true;
-      }
-
-      handleMouseMove(event) {
-        if (!this.isDragging) return;
-
-        const containerRect = this.sliderTrack.getBoundingClientRect();
-        const offsetX = event.clientX - containerRect.left;
-        const thumbPosition = (offsetX / containerRect.width) * 100;
-
-        if (thumbPosition >= 0 && thumbPosition <= 100) {
-          this.sliderThumb.style.left = thumbPosition + '%';
-          this.value = Math.round((thumbPosition / 100) * (this.max - this.min) + this.min);
-          console.log(this.value);
+    <h2>Slider</h2>
+    <p>Description: This is a slider that transitions from light pink to dark pink.</p>
+  
+    <div id="slider"></div>
+    <div id="valueBox"></div>
+  
+    <script>
+      class Slider {
+        constructor(containerId, min, max, value) {
+          this.container = document.getElementById(containerId);
+          this.min = min;
+          this.max = max;
+          this.value = value;
+  
+          this.createSlider();
           this.updateSliderValue();
-          // Do something with the slider value
+  
+          this.sliderThumb.addEventListener('mousedown', this.handleMouseDown.bind(this));
+          document.addEventListener('mousemove', this.handleMouseMove.bind(this));
+          document.addEventListener('mouseup', this.handleMouseUp.bind(this));
+        }
+  
+        createSlider() {
+          this.sliderContainer = document.createElement('div');
+          this.sliderContainer.className = 'slider-container';
+  
+          this.sliderTrack = document.createElement('div');
+          this.sliderTrack.className = 'slider-track';
+  
+          this.sliderThumb = document.createElement('div');
+          this.sliderThumb.className = 'slider-thumb';
+  
+          this.sliderTrack.appendChild(this.sliderThumb);
+          this.sliderContainer.appendChild(this.sliderTrack);
+          this.container.appendChild(this.sliderContainer);
+        }
+  
+        updateSliderValue() {
+          const thumbPosition = ((this.value - this.min) / (this.max - this.min)) * 100;
+          this.sliderThumb.style.left = thumbPosition + '%';
+  
+          const lightPink = "#FFC0CB";
+          const darkPink = "#FF1493";
+          const thumbColor = this.calculateColor(lightPink, darkPink, thumbPosition);
+          const trackColor = this.calculateColor(lightPink, darkPink, 100);
+  
+          this.sliderThumb.style.backgroundColor = thumbColor;
+          this.sliderTrack.style.backgroundColor = trackColor;
+  
+          const valueBox = document.getElementById('valueBox');
+          valueBox.textContent = this.value;
+        }
+  
+        calculateColor(startColor, endColor, percentage) {
+          const startRGB = this.hexToRgb(startColor);
+          const endRGB = this.hexToRgb(endColor);
+  
+          const r = Math.round(startRGB.r + ((endRGB.r - startRGB.r) * percentage) / 100);
+          const g = Math.round(startRGB.g + ((endRGB.g - startRGB.g) * percentage) / 100);
+          const b = Math.round(startRGB.b + ((endRGB.b - startRGB.b) * percentage) / 100);
+  
+          return `rgb(${r},${g},${b})`;
+        }
+  
+        hexToRgb(hex) {
+          const result = /^#?([a-f\d]{2})([a-f\d]{2})([a-f\d]{2})$/i.exec(hex);
+          return result
+            ? {
+                r: parseInt(result[1], 16),
+                g: parseInt(result[2], 16),
+                b: parseInt(result[3], 16),
+              }
+            : null;
+        }
+  
+        handleMouseDown() {
+          this.isDragging = true;
+        }
+  
+        handleMouseMove(event) {
+          if (!this.isDragging) return;
+  
+          const containerRect = this.sliderTrack.getBoundingClientRect();
+          const offsetX = event.clientX - containerRect.left;
+          const thumbPosition = (offsetX / containerRect.width) * 100;
+  
+          if (thumbPosition >= 0 && thumbPosition <= 100) {
+            this.sliderThumb.style.left = thumbPosition + '%';
+            this.value = Math.round((thumbPosition / 100) * (this.max - this.min) + this.min);
+            console.log(this.value);
+            this.updateSliderValue();
+            // Do something with the slider value
+          }
+        }
+  
+        handleMouseUp() {
+          this.isDragging = false;
         }
       }
-
-      handleMouseUp() {
-        this.isDragging = false;
-      }
+  
+      // Create an instance of the Slider class
+      const slider = new Slider('slider', 0, 100, 50);
+    </script>
+  </div>
+  
+  <style>
+    .slider-container {
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      padding: 10px;
     }
-
-    // Create an instance of the Slider class
-    const slider = new Slider('slider', 0, 100, 50);
-  </script>
-</div>
-
-<style>
-  .slider-container {
-    margin-bottom: 20px;
-  }
-
-  .slider-track {
-    width: 100%;
-    height: 5px;
-    background-color: #ddd;
-    border-radius: 5px;
-    position: relative;
-    cursor: pointer;
-  }
-
-  .slider-thumb {
-    width: 15px;
-    height: 15px;
-    background-color: #888;
-    border-radius: 50%;
-    position: absolute;
-    top: -5px;
-    cursor: grab;
-  }
-</style>
+  
+    .slider-track {
+      width: 100%;
+      height: 5px;
+      background-color: #ddd;
+      border-radius: 5px;
+      position: relative;
+      cursor: pointer;
+    }
+  
+    .slider-thumb {
+      width: 15px;
+      height: 15px;
+      background-color: #888;
+      border-radius: 50%;
+      position: absolute;
+      top: -5px;
+      cursor: grab;
+    }
+  
+    #valueBox {
+      margin-top: 10px;
+      font-weight: bold;
+    }
+  </style>
