@@ -243,3 +243,78 @@
       font-weight: bold;
     }
   </style>
+    
+ <title>Pagination Example</title>
+  <style>
+    .pagination {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-top: 20px;
+    }
+
+    .pagination button {
+      padding: 5px 10px;
+      margin: 0 5px;
+    }
+
+    .pagination span {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <div class="pagination">
+    <button id="prev-btn">Prev</button>
+    <span id="page-info"></span>
+    <button id="next-btn">Next</button>
+  </div>
+
+  <script>
+    class Pagination {
+      constructor(totalItems, itemsPerPage) {
+        this.totalItems = totalItems;
+        this.itemsPerPage = itemsPerPage;
+        this.currentPage = 1;
+        this.prevButton = document.getElementById('prev-btn');
+        this.nextButton = document.getElementById('next-btn');
+        this.pageInfo = document.getElementById('page-info');
+        this.prevButton.addEventListener('click', () => this.previousPage());
+        this.nextButton.addEventListener('click', () => this.nextPage());
+        this.render();
+      }
+
+      getTotalPages() {
+        return Math.ceil(this.totalItems / this.itemsPerPage);
+      }
+
+      nextPage() {
+        if (this.currentPage < this.getTotalPages()) {
+          this.currentPage++;
+          this.render();
+        }
+      }
+
+      previousPage() {
+        if (this.currentPage > 1) {
+          this.currentPage--;
+          this.render();
+        }
+      }
+
+      render() {
+        const totalPages = this.getTotalPages();
+        const currentPage = this.currentPage;
+
+        this.pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+
+        this.prevButton.disabled = currentPage === 1;
+        this.nextButton.disabled = currentPage === totalPages;
+      }
+    }
+
+    // Example usage:
+    const pagination = new Pagination(100, 10); // 100 total items, 10 items per page
+  </script>
+</body>
+</html>
