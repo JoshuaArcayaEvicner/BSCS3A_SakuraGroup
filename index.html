@@ -13,17 +13,7 @@
     color: black;
     }
     /*CSS for component styling */
-    .pink1 {
-      background-color: #ffffff;
-      color: rgb(0, 0, 0);
-    }
-
-    .pink2 {
-      background-color: #ffffff;
-      color: rgb(0, 0, 0);
-    }
-
-    .pink3 {
+    .bg {
       background-color: #ffffff;
       color: rgb(0, 0, 0);
     }
@@ -32,45 +22,36 @@
       color: rgb(0, 0, 0);
       margin-top: 20px;
     }
+    p{
+        font-size: medium;
+        padding-top: 10px;
+    }
+    h2{
+        padding: 10px;
+        padding-bottom: 10px;
+    }
 
     /* Add more styles as needed */
 
     /* CSS for layout and spacing */
     .component {
       margin-bottom: 20px;
-      padding: 10px;
+      padding: 30px;
     }
   </style>
-  </head>
+</head>
 <body>
-  <div id="app">
-    <!-- Functioning Buttons -->
-    <div class="component pink1">
-      <h2>Functioning Buttons</h2>
-      <p>Description: These are three functioning buttons with different pink color palettes.</p>
-      <button class="pink1">Button 1</button>
-      <button class="pink2">Button 2</button>
-      <button class="pink3">Button 3</button>
-    </div>
-
-    <div class="component explain">
-      <p><b>Making use of the functional button: </b><br><br>
-      A functional button is often a button element on a webpage that performs a specific task. When a user clicks the button, it invokes a JavaScript code that performs a given job or collection of tasks.
-       <br><br>
-      <b>Consider this: </b><br>
-      <button id="myButton">Click Me!</button> <br><br>
-      const button = document.getElementById("myButton"); <br>
-      button.addEventListener("click", function() {
-        // Code to be executed when the button is clicked
-        // This is the function that defines the button's functionality
-      }); <br><br>
-      const button = document.getElementById("myButton"); <br><br>
-      button.addEventListener("click", function() {
-        alert("Button clicked!");
-      }); <br><br>
+    <div id="app">
+      <!-- Functioning Buttons -->
+      <div class="component bg">
+        <h2>Functioning Buttons</h2>
+        <p>Description: These are three functioning buttons with different pink color palettes.</p>
+        <button class="pink1">Button 1</button>
+        <button class="pink2">Button 2</button>
+        <button class="pink3">Button 3</button>
       </div>
-    
-     <div class="component pink2">
+  
+      <div class="component bg">
         <h2>Notifications</h2>
         <p>Description: These are three notification components with a pink color palette.</p>
   
@@ -108,16 +89,40 @@
   </head>
   <body>
     <div class="component explain">
-        <p><b>Making use of the onclick event: </b><br><br>
-            So far in this course, when the body of the web page is loaded, we have called the showNotification() function. We could still use other events to activate it instead. For example, we may show the warning only if the user clicks on a button.
-            <br><br>
-            <b>Consider this:</b><br>
-            Remove the body> element's onload="showNotification()" property.
-            Insert the following HTML button> element anywhere on your web page: <br><br>
-            "button onclick="showNotification('successNotification')">Show Success Notification"<br>
-            "button onclick="showNotification('errorNotification')">Show Error Notification"<br>
-            "button onclick="showNotification('infoNotification')">Show Info Notification"<br><br>
-            Shows the example here below:
+        <p><b>In JavaScript, you can create an alert dialog box that appears when a button is pressed. Here's how to do it:</b><br><br>
+           <b> 1. HTML Button Element: </b><br>
+            First, you need to have an HTML button element in your HTML file. For example: <br><br>
+            <b>button id="myButton">"Click Me"</b><br>
+            In this example, we have a button with the id attribute set to "myButton". This id will be used to reference the button element in JavaScript.<br><br>
+
+            <b> 2. JavaScript Event Listener: </b><br>
+            Next, you can add a JavaScript event listener to the button element to detect the button click event. Here's an example using the addEventListener method:<br><br>
+            <b>var button = document.getElementById('myButton');<br>
+                button.addEventListener('click', function() {<br>
+                  // Your code here<br>
+                });</b><br>
+                In this code, we retrieve the button element using document.getElementById('myButton') and assign it to the button variable. Then, we add an event listener to the button using addEventListener with the event type set to 'click'. Inside the event listener function, you can add your own code.<br><br>
+
+            <b> 3. Alert Dialog Box: </b><br>
+            To display an alert dialog box when the button is clicked, you can use the alert function in JavaScript. Here's an example:<br><br>
+            <b> var button = document.getElementById('myButton');<br>
+                button.addEventListener('click', function() {<br>
+                alert('Button clicked!');<br>
+                });</b><br>
+                In this code, when the button is clicked, the alert function is called with the message 'Button clicked!'. This will display an alert dialog box with the specified message.<br><br>
+            
+            <b>4. Customizing the Alert Message:</b><br>
+            You can customize the alert message to display any text or dynamic content you want. For example:<br><br>
+            <b>
+                var button = document.getElementById('myButton');<br>
+                var name = 'John';<br>
+                button.addEventListener('click', function() {<br>
+                alert('Hello, ' + name + '! Button clicked!');<br>
+                });</b><br>
+                In this modified code, the alert message includes a greeting based on the value of the name variable. The message will display "Hello, John! Button clicked!".<br><br>
+
+            <b>By combining these steps, you can create a button click event listener in JavaScript that triggers an alert dialog box with a custom message when the button is clicked.</b>
+            </p>
     </div>
 
     <div class="notification success" id="successNotification">
@@ -146,9 +151,9 @@
       }
     </script>
       </div>
- 
-<!-- Slider Component -->
-<div class="component pink3">
+  
+    <!-- Slider Component -->
+<div class="component bg">
     <h2>Slider</h2>
     <p>Description: This is a slider that transitions from light pink to dark pink.</p>
   
@@ -296,82 +301,79 @@
       text-align: center; 
     }
   </style>
-    
+
 <title>Pagination</title>
+<style>
+  .pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
 
-  <style>
-    .pagination {
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      margin-top: 20px;
-    }
+  .pagination button {
+    padding: 5px 10px;
+    margin: 0 5px;
+  }
 
-    .pagination button {
-      padding: 5px 10px;
-      margin: 0 5px;
-    }
-
-    .pagination span {
-      font-weight: bold;
-    }
-  </style>
+  .pagination span {
+    font-weight: bold;
+  }
+</style>
 </head>
-<body>
+  <!-- Pagination -->
+       <div class="component bg">
+          <h2>Pagination</h2>
+          <p>Description: This is a pagination component with numbers from 1 to 10 and a different pink color palette.</p>
+          
+  <button id="prev-btn">Prev</button>
+  <span id="page-info"></span>
+  <button id="next-btn">Next</button>
+</div>
 
-      <!-- Pagination -->
-           <div class="component pink2">
-              <h2>Pagination</h2>
-              <p>Description: This is a pagination component with numbers from 1 to 10 and a different pink color palette.</p>
-              
-      <button id="prev-btn">Prev</button>
-      <span id="page-info"></span>
-      <button id="next-btn">Next</button>
-    </div>
-    
-    <script>
-      class Pagination {
-        constructor(totalItems, itemsPerPage) {
-          this.totalItems = totalItems;
-          this.itemsPerPage = itemsPerPage;
-          this.currentPage = 1;
-          this.prevButton = document.getElementById('prev-btn');
-          this.nextButton = document.getElementById('next-btn');
-          this.pageInfo = document.getElementById('page-info');
-          this.prevButton.addEventListener('click', () => this.previousPage());
-          this.nextButton.addEventListener('click', () => this.nextPage());
-          this.render();
-        }
-    
-        getTotalPages() {
-          return Math.ceil(this.totalItems / this.itemsPerPage);
-        }
-    
-        nextPage() {
-          if (this.currentPage < this.getTotalPages()) {
-            this.currentPage++;
-            this.render();
-          }
-        }
-    
-        previousPage() {
-          if (this.currentPage > 1) {
-            this.currentPage--;
-            this.render();
-          }
-        }
-    
-        render() {
-          const totalPages = this.getTotalPages();
-          const currentPage = this.currentPage;
-    
-          this.pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
-    
-          this.prevButton.disabled = currentPage === 1;
-          this.nextButton.disabled = currentPage === totalPages;
-        }
+<script>
+  class Pagination {
+    constructor(totalItems, itemsPerPage) {
+      this.totalItems = totalItems;
+      this.itemsPerPage = itemsPerPage;
+      this.currentPage = 1;
+      this.prevButton = document.getElementById('prev-btn');
+      this.nextButton = document.getElementById('next-btn');
+      this.pageInfo = document.getElementById('page-info');
+      this.prevButton.addEventListener('click', () => this.previousPage());
+      this.nextButton.addEventListener('click', () => this.nextPage());
+      this.render();
+    }
+
+    getTotalPages() {
+      return Math.ceil(this.totalItems / this.itemsPerPage);
+    }
+
+    nextPage() {
+      if (this.currentPage < this.getTotalPages()) {
+        this.currentPage++;
+        this.render();
       }
-    
-      // Example usage:
-      const pagination = new Pagination(100, 10); // 100 total items, 10 items per page
-    </script>
+    }
+
+    previousPage() {
+      if (this.currentPage > 1) {
+        this.currentPage--;
+        this.render();
+      }
+    }
+
+    render() {
+      const totalPages = this.getTotalPages();
+      const currentPage = this.currentPage;
+
+      this.pageInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+
+      this.prevButton.disabled = currentPage === 1;
+      this.nextButton.disabled = currentPage === totalPages;
+    }
+  }
+
+  // Example usage:
+  const pagination = new Pagination(100, 10); // 100 total items, 10 items per page
+</script>
