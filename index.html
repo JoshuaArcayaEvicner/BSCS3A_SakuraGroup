@@ -280,8 +280,30 @@
     }
   </style>
     
- <title>Pagination Example</title>
+<title>Pagination</title>
   <style>
+       .pink1 {
+      background-color: #ff7eb9;
+      color: white;
+    }
+
+    .pink2 {
+      background-color: #ff69b4;
+      color: white;
+    }
+
+    .pink3 {
+      background-color: #ff1493;
+      color: white;
+    }
+
+    /* Add more styles as needed */
+
+    /* CSS for layout and spacing */
+    .component {
+      margin-bottom: 20px;
+      padding: 10px;
+    }
     .pagination {
       display: flex;
       justify-content: center;
@@ -300,7 +322,14 @@
   </style>
 </head>
 <body>
-  <div class="pagination">
+
+
+         <!-- Pagination -->
+         <div class="component pink2">
+            <h2>Pagination</h2>
+            <p>Description: This is a pagination component with numbers from 1 to 10 and a different pink color palette.</p>
+
+   <div class="pagination">
     <button id="prev-btn">Prev</button>
     <span id="page-info"></span>
     <button id="next-btn">Next</button>
