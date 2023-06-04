@@ -748,7 +748,107 @@
     document.getElementById('tableContainer').appendChild(table);
   </script>
   </div>
+  </style>
+  
+   <!--- Checkbox Area ---> 
+  <style>
+    /* CSS styling for the checkbox */
+    .checkbox-container {
+      display: flex;
+      align-items: center;
+    }
 
+    .checkbox-label {
+      margin-left: 10px;
+    }
+
+    .checkbox-wrapper {
+      border: 1px solid #000;
+      padding: 5px;
+      margin: 10px;
+      background-color: pink;
+      width: fit-content;
+      margin: 0 auto; /* Center the checkbox box horizontally */
+    }
+
+    /* Styling for the checkbox */
+    .checkbox-wrapper input[type="checkbox"] {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      width: 20px;
+      height: 20px;
+      border: 1px solid #000;
+      border-radius: 3px;
+      background-color: pink;
+      outline: none;
+      margin-right: 5px;
+    }
+
+    /* Styling for the checked state */
+    .checkbox-wrapper input[type="checkbox"]:checked {
+      background-color: #5b0b2a;
+    }
+
+    /* Styling for the label */
+    .checkbox-wrapper .checkbox-label {
+      color: #000000;
+    }
+  </style>
+</head>
+<body>
+    <div class="component bg">
+        <h2>Checkbox Component</h2>
+        <p>Description:A checkbox in JavaScript is an interactive element that allows users to select or deselect options by toggling its checked state.</p>
+  <div class="checkbox-wrapper">
+    <p>Who's the best student?</p>
+    <div class="checkbox-container">
+      <input type="checkbox" id="checkbox1">
+      <label class="checkbox-label" for="checkbox1">Ralph</label>
+    </div>
+    
+    <div class="checkbox-container">
+      <input type="checkbox" id="checkbox2">
+      <label class="checkbox-label" for="checkbox2">Trecia</label>
+    </div>
+    
+    <div class="checkbox-container">
+      <input type="checkbox" id="checkbox3">
+      <label class="checkbox-label" for="checkbox3">Vanessa</label>
+    </div>
+    
+    <div class="checkbox-container">
+      <input type="checkbox" id="checkbox4">
+      <label class="checkbox-label" for="checkbox4">Joshua</label>
+    </div>
+    
+    <div class="checkbox-container">
+      <input type="checkbox" id="checkbox5">
+      <label class="checkbox-label" for="checkbox5">Angeline</label>
+    </div>
+    
+    <div class="checkbox-container">
+      <input type="checkbox" id="checkbox6">
+      <label class="checkbox-label" for="checkbox6">Gladys</label>
+    </div>
+  </div>
+
+  <script>
+    // JavaScript code for checkbox functionality
+    var checkboxes = document.querySelectorAll('input[type="checkbox"]');
+    checkboxes.forEach(function(checkbox) {
+      checkbox.addEventListener('change', function() {
+        if (this.checked) {
+          console.log('Checkbox ' + this.id + ' is checked');
+          // Perform actions when the checkbox is checked
+        } else {
+          console.log('Checkbox ' + this.id + ' is unchecked');
+          // Perform actions when the checkbox is unchecked
+        }
+      });
+    });
+  </script>
+  </div>
 <!---Form Component--->
 
 <div class="component bg">
