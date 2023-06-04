@@ -490,6 +490,264 @@
   <textarea class="pink-textarea1" placeholder="Enter your text here"></textarea>
   <textarea class="pink-textarea2" placeholder="Enter your text here"></textarea>
   </div> 
+  
+   <!--- Table Area ---> 
+   <style>
+    
+    table {
+      width: 90%;
+      border-collapse: collapse;
+      border: 3px solid rgb(0, 0, 0);
+      margin: 30px;
+      padding: 10px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    th, td {
+      padding: 8px;
+      text-align: center;
+      border-bottom: 1px solid #de7e7e;
+      background-color: rgb(232, 108, 137);
+    }
+
+    th {
+      background-color: rgb(232, 108, 137);
+    }
+
+    .copyButton {
+      padding: 5px 10px;
+      background-color: #4caf50;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .deleteButton {
+      padding: 5px 10px;
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .addButton {
+      padding: 5px 10px;
+      background-color: #3498db;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    .editButton {
+      padding: 5px 10px;
+      background-color: #9b59b6;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+  <div class="component bg">
+    <h2>Table Components</h2>
+    <p>Description: The JavaScript table component enables the creation and management of dynamic, data-driven tables for efficient organization and presentation of information.
+    </p>
+  
+</head>
+<body>
+  <div id="tableContainer"></div>
+
+  <script>
+    
+    var table = document.createElement('table');
+
+    
+    var data = [
+      ['Last Name', 'First Name', 'Middle Initial', 'Course & Section', ''],
+      ['Calusa', 'Trecia Ann', 'A.', 'BSCS3A', ''],
+      ['Delvo', 'Ralph Daniel', 'R.', 'BSCS3A', ''],
+      ['Evicner', 'Joshua', 'A.', 'BSCS3A', '']
+    ];
+
+  
+    for (var i = 0; i < data.length; i++) {
+      var row = document.createElement('tr'); 
+
+      for (var j = 0; j < data[i].length; j++) {
+        var cell = document.createElement(i === 0 ? 'th' : 'td'); 
+        var cellText = document.createTextNode(data[i][j]);
+
+        cell.appendChild(cellText);
+        row.appendChild(cell); 
+      }
+
+      if (i === 0) {
+        var copyButtonTitleCell = document.createElement('th'); 
+        copyButtonTitleCell.textContent = 'Copy'; 
+        row.appendChild(copyButtonTitleCell); 
+      } else {
+        var copyButton = document.createElement('button'); 
+        copyButton.innerText = 'Copy'; 
+        copyButton.classList.add('copyButton'); 
+
+        copyButton.addEventListener('click', function() {
+          var rowData = this.parentNode.parentNode.innerText.trim(); 
+          navigator.clipboard.writeText(rowData);
+          alert('Row data copied: ' + rowData); 
+        });
+
+        var copyButtonCell = document.createElement('td'); 
+        copyButtonCell.appendChild(copyButton); 
+        row.appendChild(copyButtonCell); 
+      }
+
+      var deleteButton = document.createElement('button'); 
+      deleteButton.innerText = 'Delete';
+      deleteButton.classList.add('deleteButton'); 
+
+      deleteButton.addEventListener('click', function() {
+        var rowToDelete = this.parentNode.parentNode; 
+        rowToDelete.parentNode.removeChild(rowToDelete);
+      });
+
+      var deleteButtonCell = document.createElement('td'); 
+      deleteButtonCell.appendChild(deleteButton); 
+      row.appendChild(deleteButtonCell); 
+
+      var editButton = document.createElement('button'); 
+      editButton.innerText = 'Edit'; 
+      editButton.classList.add('editButton'); 
+
+      editButton.addEventListener('click', function() {
+        var rowToEdit = this.parentNode.parentNode; 
+        var cells = rowToEdit.getElementsByTagName('td'); 
+
+        for (var k = 0; k < cells.length - 2; k++) {
+          var cellText = cells[k].innerText.trim(); 
+
+          if (k === 0 || k === 1 || k === 2) {
+            var input = document.createElement('input'); 
+            input.type = 'text'; 
+            input.value = cellText; 
+
+            cells[k].innerText = ''; 
+            cells[k].appendChild(input); 
+          }
+        }
+
+        this.innerText = 'Save'; 
+        this.removeEventListener('click', arguments.callee); 
+
+        this.addEventListener('click', function() {
+          var rowToSave = this.parentNode.parentNode;
+          var cellsToSave = rowToSave.getElementsByTagName('td'); 
+
+          for (var l = 0; l < cellsToSave.length - 2; l++) {
+            if (l === 0 || l === 1 || l === 2) {
+              var inputValue = cellsToSave[l].querySelector('input').value; 
+              cellsToSave[l].innerText = inputValue; 
+            }
+          }
+
+          this.innerText = 'Edit'; 
+          this.removeEventListener('click', arguments.callee);
+          this.addEventListener('click', editButtonClickHandler); 
+        });
+      });
+
+      var editButtonCell = document.createElement('td'); 
+      editButtonCell.appendChild(editButton); 
+      row.appendChild(editButtonCell); 
+
+      var addButton = document.createElement('button'); 
+      addButton.innerText = 'Add'; 
+      addButton.classList.add('addButton'); 
+
+      addButton.addEventListener('click', function() {
+        var newRow = document.createElement('tr'); 
+        newRow.innerHTML = `
+          <td contenteditable></td>
+          <td contenteditable></td>
+          <td contenteditable></td>
+          <td contenteditable></td>
+          <td>
+            <button class="copyButton">Copy</button>
+          </td>
+          <td>
+            <button class="deleteButton">Delete</button>
+          </td>
+          <td>
+            <button class="editButton">Edit</button>
+          </td>
+        `;
+
+        var copyButton = newRow.querySelector('.copyButton'); 
+        copyButton.addEventListener('click', function() {
+          var rowData = this.parentNode.parentNode.innerText.trim(); 
+          navigator.clipboard.writeText(rowData); 
+          alert('Row data copied: ' + rowData); 
+        });
+
+        var deleteButton = newRow.querySelector('.deleteButton'); 
+        deleteButton.addEventListener('click', function() {
+          var rowToDelete = this.parentNode.parentNode; 
+          rowToDelete.parentNode.removeChild(rowToDelete); 
+        });
+
+        var editButton = newRow.querySelector('.editButton'); 
+        editButton.addEventListener('click', function() {
+          var rowToEdit = this.parentNode.parentNode; 
+          var cells = rowToEdit.getElementsByTagName('td');
+
+          for (var k = 0; k < cells.length - 3; k++) {
+            var cellText = cells[k].innerText.trim(); 
+
+            if (k === 0 || k === 1 || k === 2) {
+              var input = document.createElement('input'); 
+              input.type = 'text';
+              input.value = cellText; 
+
+              cells[k].innerText = ''; 
+              cells[k].appendChild(input);
+            }
+          }
+
+          this.innerText = 'Save'; 
+          this.removeEventListener('click', arguments.callee);
+
+          this.addEventListener('click', function() {
+            var rowToSave = this.parentNode.parentNode; 
+            var cellsToSave = rowToSave.getElementsByTagName('td');
+
+            for (var l = 0; l < cellsToSave.length - 3; l++) {
+              if (l === 0 || l === 1 || l === 2) {
+                var inputValue = cellsToSave[l].querySelector('input').value; 
+                cellsToSave[l].innerText = inputValue; 
+              }
+            }
+
+            this.innerText = 'Edit'; 
+            this.removeEventListener('click', arguments.callee);
+            this.addEventListener('click', editButtonClickHandler); 
+          });
+        });
+
+        var addButtonCell = document.createElement('td'); 
+        addButtonCell.appendChild(addButton); 
+        newRow.appendChild(addButtonCell); 
+
+        table.appendChild(newRow);
+      });
+
+      var addButtonCell = document.createElement('td'); 
+      addButtonCell.appendChild(addButton);
+      row.appendChild(addButtonCell); 
+
+      table.appendChild(row); 
+    }
+
+    document.getElementById('tableContainer').appendChild(table);
+  </script>
+  </div>
 
 <!---Form Component--->
 
@@ -601,6 +859,5 @@ export default {
   </body>
   </html>
  <!---================================--->
-
 
 
