@@ -58,101 +58,120 @@
   
     <title>Notification Components</title>
     <style>
-      .notification {
-        position: fixed;
-        top: 20px;
-        right: 20px;
-        width: 300px;
-        background-color: #f9f9f9;
-        border: 1px solid #ccc;
-        padding: 10px;
-        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-      }
-  
-      .notification.success {
-        background-color: #dff0d8;
-        border-color: #d6e9c6;
-        color: #3c763d;
-      }
-  
-      .notification.error {
-        background-color: #f2dede;
-        border-color: #ebccd1;
-        color: #a94442;
-      }
-  
-      .notification.info {
-        background-color: #d9edf7;
-        border-color: #bce8f1;
-        color: #31708f;
-      }
-    </style>
-  </head>
-  <body>
-    <div class="component explain">
-        <p><b>In JavaScript, you can create an alert dialog box that appears when a button is pressed. Here's how to do it:</b><br><br>
-           <b> 1. HTML Button Element: </b><br>
-            First, you need to have an HTML button element in your HTML file. For example: <br><br>
-            <b>button id="myButton">"Click Me"</b><br>
-            In this example, we have a button with the id attribute set to "myButton". This id will be used to reference the button element in JavaScript.<br><br>
+    .notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      width: 300px;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      padding: 10px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
 
-            <b> 2. JavaScript Event Listener: </b><br>
-            Next, you can add a JavaScript event listener to the button element to detect the button click event. Here's an example using the addEventListener method:<br><br>
-            <b>var button = document.getElementById('myButton');<br>
-                button.addEventListener('click', function() {<br>
-                  // Your code here<br>
-                });</b><br>
-                In this code, we retrieve the button element using document.getElementById('myButton') and assign it to the button variable. Then, we add an event listener to the button using addEventListener with the event type set to 'click'. Inside the event listener function, you can add your own code.<br><br>
+    .notification.success {
+      background-color: #dff0d8;
+      border-color: #d6e9c6;
+      color: #3c763d;
+    }
 
-            <b> 3. Alert Dialog Box: </b><br>
-            To display an alert dialog box when the button is clicked, you can use the alert function in JavaScript. Here's an example:<br><br>
-            <b> var button = document.getElementById('myButton');<br>
-                button.addEventListener('click', function() {<br>
-                alert('Button clicked!');<br>
-                });</b><br>
-                In this code, when the button is clicked, the alert function is called with the message 'Button clicked!'. This will display an alert dialog box with the specified message.<br><br>
-            
-            <b>4. Customizing the Alert Message:</b><br>
-            You can customize the alert message to display any text or dynamic content you want. For example:<br><br>
-            <b>
-                var button = document.getElementById('myButton');<br>
-                var name = 'John';<br>
-                button.addEventListener('click', function() {<br>
-                alert('Hello, ' + name + '! Button clicked!');<br>
-                });</b><br>
-                In this modified code, the alert message includes a greeting based on the value of the name variable. The message will display "Hello, John! Button clicked!".<br><br>
+    .notification.error {
+      background-color: #f2dede;
+      border-color: #ebccd1;
+      color: #a94442;
+    }
 
-            <b>By combining these steps, you can create a button click event listener in JavaScript that triggers an alert dialog box with a custom message when the button is clicked.</b>
-            </p>
-    </div>
+    .notification.info {
+      background-color: #d9edf7;
+      border-color: #bce8f1;
+      color: #31708f;
+    }
 
-    <div class="notification success" id="successNotification">
-      <strong>Success:</strong> Your action was successful.
-    </div>
-  
-    <div class="notification error" id="errorNotification">
-      <strong>Error:</strong> An error occurred while processing your request.
-    </div>
-  
-    <div class="notification info" id="infoNotification">
-      <strong>Info:</strong> This is an informational message.
-    </div>
-  
-    <button onclick="showNotification('successNotification')">Show Success Notification</button>
-    <button onclick="showNotification('errorNotification')">Show Error Notification</button>
-    <button onclick="showNotification('infoNotification')">Show Info Notification</button>
-  
-    <script>
-      function showNotification(notificationId) {
-        var notification = document.getElementById(notificationId);
-        notification.style.display = 'block';
-        setTimeout(function() {
-          notification.style.display = 'none';
-        }, 3000); // Hide notification after 3 seconds
-      }
-    </script>
+    button {
+      padding: 10px 20px;
+      background-color: pink;
+      border: none;
+      color: white;
+      cursor: pointer;
+      font-size: 16px;
+      border-radius: 4px;
+    }
+  </style>
+</head>
+<body>
+  <div class="notification success" id="successNotification">
+    <strong>Success:</strong> Your action was successful.
+  </div>
+
+  <div class="notification error" id="errorNotification">
+    <strong>Error:</strong> An error occurred while processing your request.
+  </div>
+
+  <div class="notification info" id="infoNotification">
+    <strong>Info:</strong> This is an informational message.
+  </div>
+
+  <button onclick="showNotification('successNotification')">Show Success Notification</button>
+  <button onclick="showNotification('errorNotification')">Show Error Notification</button>
+  <button onclick="showNotification('infoNotification')">Show Info Notification</button>
+
+  <script>
+    function showNotification(notificationId) {
+      var notification = document.getElementById(notificationId);
+      notification.style.display = 'block';
+      setTimeout(function() {
+        notification.style.display = 'none';
+      }, 3000); // Hide notification after 3 seconds
+    }
+  </script>
       </div>
+
+      <!---- Radio Button --->
+
+    <div class="component bg">
+        <h2>Radio Button</h2>
+        <p>Description: These are three Radio Button components with a pink color palette.</p>
+
+        <title>Radio Components</title>
+
+        <style>
+    /* Style for the radio button */
+    .pink-radio {
+      --color: pink; /* Change this value to modify the color */
+    }
+
+    .pink-radio input[type="radio"] {
+      display: none; /* Hide the default radio button */
+    }
+
+    .pink-radio label {
+      display: inline-block;
+      padding: 5px 10px;
+      border-radius: 20px;
+      background-color: var(--color);
+      color: white;
+      cursor: pointer;
+    }
+
+    .pink-radio input[type="radio"]:checked + label {
+      background-color: white;
+      color: var(--color);
+    }
+  </style>
+</head>
+<body>
+  <div class="pink-radio">
+    <input type="radio" id="radio1" name="radio" value="option1">
+    <label for="radio1">Option 1</label>
   
+    <input type="radio" id="radio2" name="radio" value="option2">
+    <label for="radio2">Option 2</label>
+  
+    <input type="radio" id="radio3" name="radio" value="option3">
+    <label for="radio3">Option 3</label>
+    </div>
+  </div>
+
     <!-- Slider Component -->
 <div class="component bg">
     <h2>Slider</h2>
@@ -451,7 +470,7 @@
       stopLoading();
     });
   </script>
-	
+  
      <!--- Text Area ---> 
   <style>
     .pink-textarea {
@@ -930,7 +949,7 @@
           <li><a href="#">Contact</a></li>
         </ul>
       </div> </div>
-	       
+         
 <!---Form Component--->
 
 <div class="component bg">
@@ -940,11 +959,11 @@
     <style>
       .form-group {
         background-color: #FADDE1;
-			  padding: 50px;
-			  border-radius: 10px;
-			  box-shadow: 0 0 10px rgba(0,0,0,0.2);
-			  max-width: 500px;
-			  margin: auto;
+        padding: 50px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.2);
+        max-width: 500px;
+        margin: auto;
         border: 3px solid #ff99cc; 
       }
   
@@ -1000,7 +1019,7 @@
     </script>
 
  <!---================================--->
- 	    <!---Number Input--->
+      <!---Number Input--->
 
 <template>
   <input type="number" class="number-input" v-model="value" :min="min" :max="max" :step="step">
@@ -1037,9 +1056,8 @@ export default {
   border-radius: 5px;
 }
 </style>
-	    
+      
   </body>
   </html>
  <!---================================--->
-
 
