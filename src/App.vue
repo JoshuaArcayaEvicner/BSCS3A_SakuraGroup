@@ -1,6 +1,6 @@
 <template>
   <SKButton label="HELLO SAKURA!"></SKButton>
-
+  <SKNumberinput value=5 max=10></SKNumberinput>
 
 </template>
 
