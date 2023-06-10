@@ -1,6 +1,18 @@
 {
-  "name": "vue-project",
-  "version": "0.0.0",
+  "name": "sakura-component",
+  "version": "0.0.1",
+  "main": "./dist/sakura-component.umd.js",
+  "module": "./dist/sakura-component.mjs",
+  "exports": {
+    ".": {
+      "import": "./dist/sakura-component.mjs",
+      "require": "./dist/sakura-component.umd.js"
+    },
+    "./dist/style.css": "./dist/style.css"
+  },
+  "files": [
+    "dist"
+  ],
   "private": true,
   "scripts": {
     "dev": "vite",
