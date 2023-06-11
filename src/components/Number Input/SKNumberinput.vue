@@ -1,7 +1,7 @@
 <template>
     <input type="number" class="number-input" :min="min" :max="max" :step="step">
 </template>
-   
+  
   <script>
   export default {
     name: 'NumberInput',
