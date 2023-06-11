@@ -1,7 +1,9 @@
 <template>
-  <SKButton label="HELLO SAKURA!"></SKButton>
-  <SKNumberinput value=5 max=10></SKNumberinput>
-
+  <SKButton label="HELLO SAKURA!" color="primary"></SKButton>
+  <SKButton label="HELLO SAKURA!" color="light"></SKButton>
+  <SKButton label="HELLO SAKURA!" color="dark"></SKButton>
+  <SKButton label="HELLO SAKURA!" color="pink1"></SKButton>
+  <SKButton label="HELLO SAKURA!" color="pink2"></SKButton>
 </template>
 
 <style scoped>

@@ -1,23 +1,40 @@
-import { openBlock as r, createElementBlock as c, toDisplayString as i } from "vue";
-const a = (t, n) => {
+import { openBlock as s, createElementBlock as u, normalizeClass as i, renderSlot as p, toDisplayString as m } from "vue";
+const c = (t, n) => {
   const e = t.__vccOpts || t;
-  for (const [o, s] of n)
-    e[o] = s;
+  for (const [o, r] of n)
+    e[o] = r;
   return e;
-}, p = {
+}, d = {
   props: {
+    color: {
+      type: String,
+      default: "primary",
+      validator: (t) => ["primary", "dark", "light", "pink1", "pink2"].includes(t)
+    },
     label: {
       type: String,
-      required: !1,
-      default: void 0
+      default: ""
+    }
+  },
+  computed: {
+    computedClasses() {
+      return {
+        button: !0,
+        [`color-${this.color}`]: !0
+      };
     }
   }
-}, l = { class: "button" };
-function m(t, n, e, o, s, _) {
-  return r(), c("button", l, i(e.label), 1);
+}, _ = { key: 1 };
+function f(t, n, e, o, r, a) {
+  return s(), u("button", {
+    class: i(a.computedClasses),
+    onClick: n[0] || (n[0] = ($) => t.$emit("click"))
+  }, [
+    e.label ? (s(), u("span", _, m(e.label), 1)) : p(t.$slots, "default", { key: 0 })
+  ], 2);
 }
-const d = /* @__PURE__ */ a(p, [["render", m]]);
-const f = {
+const y = /* @__PURE__ */ c(d, [["render", f]]);
+const b = {
   name: "NumberInput",
   props: {
     value: {
@@ -37,23 +54,23 @@ const f = {
       default: 1
     }
   }
-}, b = ["min", "max", "step"];
-function y(t, n, e, o, s, _) {
-  return r(), c("input", {
+}, k = ["min", "max", "step"];
+function v(t, n, e, o, r, a) {
+  return s(), u("input", {
     type: "number",
     class: "number-input",
     min: e.min,
     max: e.max,
     step: e.step
-  }, null, 8, b);
+  }, null, 8, k);
 }
-const x = /* @__PURE__ */ a(f, [["render", y]]), v = { SKButton: d, SKNumberinput: x }, u = v, S = {
+const x = /* @__PURE__ */ c(b, [["render", v]]), S = { SKButton: y, SKNumberinput: x }, l = S, N = {
   install: (t, n) => {
-    Object.keys(u).forEach((e) => {
-      t.component(e, u[e]);
+    Object.keys(l).forEach((e) => {
+      t.component(e, l[e]);
     });
   }
 };
 export {
-  S as default
+  N as default
 };
