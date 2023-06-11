@@ -1,10 +1,10 @@
-import { openBlock as s, createElementBlock as u, normalizeClass as i, renderSlot as p, toDisplayString as m } from "vue";
+import { openBlock as u, createElementBlock as l, normalizeClass as i, renderSlot as p, toDisplayString as d } from "vue";
 const c = (t, n) => {
   const e = t.__vccOpts || t;
-  for (const [o, r] of n)
-    e[o] = r;
+  for (const [r, o] of n)
+    e[r] = o;
   return e;
-}, d = {
+}, m = {
   props: {
     color: {
       type: String,
@@ -25,17 +25,16 @@ const c = (t, n) => {
     }
   }
 }, _ = { key: 1 };
-function f(t, n, e, o, r, a) {
-  return s(), u("button", {
-    class: i(a.computedClasses),
-    onClick: n[0] || (n[0] = ($) => t.$emit("click"))
+function y(t, n, e, r, o, s) {
+  return u(), l("button", {
+    class: i(s.computedClasses),
+    onClick: n[0] || (n[0] = (x) => t.$emit("click"))
   }, [
-    e.label ? (s(), u("span", _, m(e.label), 1)) : p(t.$slots, "default", { key: 0 })
+    e.label ? (u(), l("span", _, d(e.label), 1)) : p(t.$slots, "default", { key: 0 })
   ], 2);
 }
-const y = /* @__PURE__ */ c(d, [["render", f]]);
+const f = /* @__PURE__ */ c(m, [["render", y]]);
 const b = {
-  name: "NumberInput",
   props: {
     value: {
       type: Number,
@@ -52,25 +51,37 @@ const b = {
     step: {
       type: Number,
       default: 1
+    },
+    color: {
+      type: String,
+      default: "primary",
+      validator(t) {
+        return ["primary", "dark", "light", "pink1", "pink2"].includes(t);
+      }
+    }
+  },
+  computed: {
+    colorClass() {
+      return `number-input-${this.color}`;
     }
   }
 }, k = ["min", "max", "step"];
-function v(t, n, e, o, r, a) {
-  return s(), u("input", {
+function v(t, n, e, r, o, s) {
+  return u(), l("input", {
     type: "number",
-    class: "number-input",
+    class: i(["number-input", s.colorClass]),
     min: e.min,
     max: e.max,
     step: e.step
-  }, null, 8, k);
+  }, null, 10, k);
 }
-const x = /* @__PURE__ */ c(b, [["render", v]]), S = { SKButton: y, SKNumberinput: x }, l = S, N = {
+const S = /* @__PURE__ */ c(b, [["render", v]]), g = { SKButton: f, SKNumberinput: S }, a = g, h = {
   install: (t, n) => {
-    Object.keys(l).forEach((e) => {
-      t.component(e, l[e]);
+    Object.keys(a).forEach((e) => {
+      t.component(e, a[e]);
     });
   }
 };
 export {
-  N as default
+  h as default
 };
