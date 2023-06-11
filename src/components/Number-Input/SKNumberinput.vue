@@ -38,7 +38,7 @@ export default {
   },
   computed: {
     colorClass() {
-      return number-input-${this.color};
+      return `number-input-${this.color}`;
     },
   },
 };
@@ -76,5 +76,3 @@ export default {
   background-color: #D14D72;
 }
 </style>
-
-Message #codes
