@@ -15,15 +15,28 @@ See [Vite Configuration Reference](https://vitejs.dev/config/).
 ```sh
 npm install
 ```
+### Compile and Minify for Production
+
+```sh
+npm run build
+```
+
+### Use NPM link to import Sakura Component in Local and also use to Another Vue Project
+
+```sh
+npm link
+```
+
+```sh
+npm link sakura-component
+```
+
+### The main.js should be like this:
+
+[main.js](https://raw.githubusercontent.com/JoshuaArcayaEvicner/BSCS3A_SakuraGroup/main/src/main.js)
 
 ### Compile and Hot-Reload for Development
 
 ```sh
 npm run dev
-```
-
-### Compile and Minify for Production
-
-```sh
-npm run build
 ```
