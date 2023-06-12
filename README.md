@@ -1,6 +1,6 @@
 # Sakura
 
-A Vue 3 Lightweight Component Library with Vite. This project was made by Sakura Group for Semestral Project in CS202: Component Library [Vue JS Implementation\
+A Vue 3 Lightweight Component Library with Vite. This project was made by Sakura Group for Semestral Project in CS202: Component Library [Vue JS Implementation]
 
 ## Recommended IDE Setup
 
