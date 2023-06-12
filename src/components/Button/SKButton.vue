@@ -34,35 +34,40 @@ export default {
 <style>
 .button {
   background-color: #FF0090;
-  color: #FFFFFF;
+  color: #000000;
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
+  border-color: black;
   cursor: pointer;
 }
 
 .color-primary {
   background-color: #FFA6C1;
-  color: white;
+  color: rgb(0, 0, 0);
 }
 
 .color-dark {
-  background-color: #FF5D8F;
-  color: white;
+  background-color: #d40f4e;
+  color: rgb(0, 0, 0);
 }
 
 .color-light {
-  background-color: #FFACC5;
-  color: black;
+  background-color: #e78fa9;
+  color: rgb(0, 0, 0);
 }
 
 .color-pink1 {
-  background-color: #FF87AB;
-  color: white;
+  background-color: #ab546e;
+  color: rgb(0, 0, 0);
 }
 
 .color-pink2 {
-  background-color: #FF97B7;
-  color: white;
+  background-color: #ffc4d6;
+  color: rgb(0, 0, 0);
+}
+
+.button:hover {
+  background-color: #a96db9; /* Change to the desired hover color */
 }
 </style>

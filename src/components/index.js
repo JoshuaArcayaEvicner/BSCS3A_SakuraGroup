@@ -1,4 +1,12 @@
-import SKButton from './Button/SKButton.vue';
-import SKNumberinput from './Number-Input/SKNumberinput.vue'
-
-export default { SKButton, SKNumberinput };
+export { default as SKButton } from './Button/SKButton.vue';
+export { default as SKNumberinput } from './Number-Input/SKNumberinput.vue';
+export { default as SKRadioButton } from './RadioBtn/SKRadioButton.vue';
+export {default as SKText} from './Text/SKText.vue';
+export {default as SKList} from './List/SKList.vue';
+export {default as SKLoading} from './FuncLoading/SKFuncLoading.vue';
+export {default as SKPage} from './Pagination/SKPage.vue';
+export {default as SKProgress} from './Progress/SKProgress.vue';
+export {default as SKSwitch} from './Switch/SKSwitch.vue';
+export {default as SKCheckbox} from './Checkbox/SKCheckbox.vue';
+export {default as SKDialog} from './Dialog/SKDialog.vue';
+export {default as SKInput} from './Input/SKInput.vue';

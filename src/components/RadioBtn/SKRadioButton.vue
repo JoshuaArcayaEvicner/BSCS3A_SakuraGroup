@@ -1,60 +1,75 @@
 <template>
-    <div class="radio-group">
-      <label v-for="option in options" :key="option.value" class="radio-label">
-        <input type="radio" v-model="selectedOption" :value="option.value" class="radio-input">
-        <span class="radio-text">{{ option.label }}</span>
-      </label>
-    </div>
-  </template>
-  
-  <script>
-  export default {
-    props: {
-      options: {
-        type: Array,
-        required: true
-      }
+  <label :class="computedClasses">
+    <input type="radio" :value="value" :name="name" v-model="selectedValue" @change="handleChange" />
+    <span class="label-text">{{ label }}</span>
+  </label>
+</template>
+
+<script>
+export default {
+  name: "RadioButton",
+  props: {
+    value: {
+      type: String,
+      required: true,
     },
-    data() {
+    name: {
+      type: String,
+      required: true,
+    },
+    label: {
+      type: String,
+      required: true,
+    },
+    checked: {
+      type: Boolean,
+      default: false,
+    },
+  },
+  data() {
+    return {
+      selectedValue: this.checked ? this.value : null,
+    };
+  },
+  computed: {
+    computedClasses() {
       return {
-        selectedOption: ''
-      }
-    }
-  }
-  </script>
-  
-  <style scoped>
-  .radio-group {
-    display: flex;
-    flex-direction: column;
-  }
-  
-  .radio-label {
-    display: flex;
-    align-items: center;
-    font-size: 16px;
-    margin-bottom: 8px;
-  }
-  
-  .radio-input {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    width: 16px;
-    height: 16px;
-    border: 2px solid #ccc;
-    border-radius: 50%;
-    outline: none;
-    margin-right: 8px;
-    cursor: pointer;
-  }
-  
-  .radio-input:checked {
-    border-color: #7F5539;
-  }
-  
-  .radio-text {
-    color: #9C6644;
-  }
-  </style>
-  
+        "radio-button": true,
+        checked: this.selectedValue === this.value,
+      };
+    },
+  },
+  methods: {
+    handleChange() {
+      this.$emit("input", this.selectedValue);
+    },
+  },
+};
+</script>
+
+<style scoped>
+.radio-button {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+  color: rgb(221, 42, 120);
+}
+
+.radio {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid #000000;
+  border-radius: 50%;
+  margin-right: 8px;
+}
+
+.radio.checked {
+  background-color: #e5197b;
+}
+
+.label-text {
+  font-size: 14px;
+  color:#e5197b;
+}
+</style>
